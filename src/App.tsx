@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import profileImage from '../images/profile.jpg'
 import medicalImage from '../images/online-doctor-and-calendar-medical-booking.jpg'
 import boardingImage from '../images/bh.png'
@@ -21,7 +21,7 @@ const services = [
   ['Desktop & Mobile', 'C#/.NET desktop tools and Flutter cross-platform apps.'],
 ]
 
-function SectionHeading({ number, children }) {
+function SectionHeading({ number, children }: { number: string; children: ReactNode }) {
   return <div className="section-head reveal"><span className="section-tag">{number}</span><h2>{children}</h2></div>
 }
 
@@ -38,7 +38,7 @@ function App() {
     let phraseIndex = 0
     let characterIndex = 0
     let deleting = false
-    let timer
+    let timer: ReturnType<typeof setTimeout>
     const tick = () => {
       const current = phrases[phraseIndex]
       characterIndex += deleting ? -1 : 1
@@ -64,7 +64,7 @@ function App() {
       setScrollProgress(max ? (window.scrollY / max) * 100 : 0)
       setShowTop(window.scrollY > 700)
       const sections = [...document.querySelectorAll('main section[id]')]
-      const current = sections.reduce((value, section) => window.scrollY >= section.offsetTop - 220 ? section.id : value, 'home')
+      const current = sections.reduce((value, section) => window.scrollY >= (section as HTMLElement).offsetTop - 220 ? section.id : value, 'home')
       setActiveSection(current)
     }
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -75,7 +75,7 @@ function App() {
   }, [])
 
   const closeMenu = () => setMenuOpen(false)
-  const navLink = (id, label) => <a className={activeSection === id ? 'active' : ''} href={`#${id}`} onClick={closeMenu}>{label}</a>
+  const navLink = (id: string, label: string) => <a className={activeSection === id ? 'active' : ''} href={`#${id}`} onClick={closeMenu}>{label}</a>
 
   return <>
     <div className="loader"><strong>RB</strong><span /></div>

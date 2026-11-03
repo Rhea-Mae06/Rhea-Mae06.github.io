@@ -21,6 +21,14 @@ const services = [
   ['Desktop & Mobile', 'C#/.NET desktop tools and Flutter cross-platform apps.'],
 ]
 
+const socialLinks = [
+  ['GitHub', 'https://github.com/Rhea-Mae06'],
+  ['Facebook', 'https://www.facebook.com/mae.pueblas.71'],
+  ['Google', 'https://myaccount.google.com/u/5/'],
+  ['Instagram', 'https://www.instagram.com/qt_yami/'],
+  ['TikTok', 'https://www.tiktok.com/@qt.yami'],
+]
+
 function SectionHeading({ number, children }: { number: string; children: ReactNode }) {
   return <div className="section-head reveal"><span className="section-tag">{number}</span><h2>{children}</h2></div>
 }
@@ -110,7 +118,7 @@ function App() {
 
       <section id="services"><SectionHeading number="03 — What I Do">Where I can <span className="gradient">help</span></SectionHeading><div className="services">{services.map(([title, desc], index) => <article className="service reveal" key={title}><small>0{index + 1}</small><h3>{title}</h3><p>{desc}</p></article>)}</div></section>
 
-      <section id="contact"><div className="contact reveal"><span className="section-tag">04 — Contact</span><h2>Let's build something <span className="gradient">worth remembering.</span></h2><p>Open to internships, junior roles, freelance projects, and thesis collaborations. I usually reply within a day.</p><div className="contact-info"><a href="mailto:rheamaeb17@gmail.com"><span>Email</span><b>rheamaeb17@gmail.com</b></a><a href="tel:+639706733910"><span>Phone</span><b>09706733910</b></a><div><span>Address</span><b>Bintana, Tangub City, Misamis Occidental</b></div></div><div className="socials">{['GitHub', 'Facebook', 'Google', 'Instagram', 'TikTok'].map(name => <a href="https://github.com/Rhea-Mae06" key={name} target="_blank" rel="noreferrer">{name}</a>)}</div></div></section>
+      <section id="contact"><div className="contact reveal"><span className="section-tag">04 — Contact</span><h2>Let's build something <span className="gradient">worth remembering.</span></h2><p>Open to internships, junior roles, freelance projects, and thesis collaborations. I usually reply within a day.</p><div className="contact-info"><a href="mailto:rheamaeb17@gmail.com"><span>Email</span><b>rheamaeb17@gmail.com</b></a><a href="tel:+639706733910"><span>Phone</span><b>09706733910</b></a><div><span>Address</span><b>Bintana, Tangub City, Misamis Occidental</b></div></div><div className="socials">{socialLinks.map(([name, url]) => <a href={url} key={name} target="_blank" rel="noreferrer">{name}</a>)}</div></div></section>
     </main>
     <footer>© {new Date().getFullYear()} Rhea Mae. Designed and built from scratch, pixel by pixel.</footer>
     <button className={`back-top ${showTop ? 'show' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top">↑</button>
